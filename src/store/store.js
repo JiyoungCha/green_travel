@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import festivalReducer from "../components/festivals/FestivalList";
+import festivalReducer from "./slices/festivalSlice.js";
 
 export default configureStore({
   reducer: {
