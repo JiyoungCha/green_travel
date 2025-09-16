@@ -1,10 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axiosConfig from "../../configs/axiosConfig";
+import axiosConfig from "../../configs/axiosConfig.js";
 import axios from "axios";
+import { dateCalculater } from "../../utils/dateCalculater.js";
+import { dateFormatter } from "../../utils/dateFormatter.js";
 
 const festivalIndex = createAsyncThunk(
   'festivalSlice/festivalIndex',
-  async (page) => {
+  async (arg, thunkAPI) => {
+    // state 접근 방법
+    const state = thunkAPI.getState();
+    const pastDateYMD = dateFormatter.formatDateToYMD(dateCalculater.getPastDate((1000*60*60*24*30)));
+    
     const url = `${axiosConfig.BASE_URL}/searchFestival2`;
     const config = { 
       params: {
@@ -14,8 +20,8 @@ const festivalIndex = createAsyncThunk(
         _type: axiosConfig.TYPE,
         arrange: axiosConfig.ARRANGE,
         numOfRows: axiosConfig.NUMER_OF_ROWS,
-        pageNo: page,
-        eventStartDate: '20250601',
+        pageNo: state.festival.page + 1,
+        eventStartDate: pastDateYMD,
       }
     }
 

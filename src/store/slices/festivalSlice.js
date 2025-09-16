@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { festivalIndex } from "../thunks/festivalThunk";
+import { localStorageUtil } from "../../utils/localStorageUtil";
 
 const festivalSlice = createSlice({
   name: 'festivalSlice',
   initialState: {
-    list: [], // 페스티벌 리스트
-    page: 1, // 현재 페이지 번호
-    scrollEventFlg: true, // 스크롤 이벤트 디바운싱 제어 플래그
+    list: localStorageUtil.getFestivalList() ? localStorageUtil.getFestivalList() : [], // 페스티벌 리스트
+    page: localStorageUtil.getFestivalPage() ? localStorageUtil.getFestivalPage() : 0, // 현재 페이지 번호
+    scrollEventFlg: localStorageUtil.getFestivalScrollFlg() ? localStorageUtil.getFestivalScrollFlg() : true, // 스크롤 이벤트 디바운싱 제어 플래그
   },
   reducers: {
     setScrollEventFlg: (state, action) => {
@@ -27,19 +28,21 @@ const festivalSlice = createSlice({
         //   state.list = action.payload.items.item;
         // }
         if(action.payload.items.item) {
+
+        // state 저장
         state.list = [...state.list, ...action.payload.items.item];
         state.page = action.payload.pageNo;
+
+        // localStorage 저장
+        localStorageUtil.setFestivalList(state.list);
+        localStorageUtil.setFestivalPage(state.page);
+        localStorageUtil.setFestivalScrollFlg(state.scrollEventFlg);
+
         state.scrollEventFlg = true;
       } else {
         state.scrollEventFlg = false;
       }
       })
-      .addMatcher(
-        action => action.type.endsWith('/pending'),
-        state => {
-          console.log('처리 중입니다.');
-        }
-      )
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
