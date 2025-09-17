@@ -4,7 +4,7 @@ function Header() {
 
   return (
     <>
-      <h1>GREEN TRAVEL</h1>
+      <h1 className='header-title'>GREEN TRAVEL</h1>
     </>
   )
 }

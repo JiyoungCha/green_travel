@@ -5,7 +5,7 @@ const axiosConfig = {
   TYPE: 'json',
   ARRANGE: 'O',
   BASE_URL: 'https://apis.data.go.kr/B551011/KorService2',
-  NUMER_OF_ROWS: 9,
+  NUMER_OF_ROWS: 12,
 }
 
 export default axiosConfig;

@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 import { festivalIndex } from '../../store/thunks/festivalThunk.js';
 import { dateFormatter } from '../../utils/dateFormatter.js';
 import { setScrollEventFlg } from '../../store/slices/festivalSlice.js';
+import { useNavigate } from 'react-router-dom';
+import { setfestivalInfo } from '../../store/slices/festivalShowSlices.js'
 
 function FestivalList() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
-  const festivalList = useSelector(state => state.festival.list);
-  
+  const festivalList = useSelector(state => state.festival.list);  
   const scrollEventFlg = useSelector(state => state.festival.scrollEventFlg);
 
   useEffect(() => {
@@ -41,21 +43,26 @@ function FestivalList() {
     const winHeight = window.innerHeight; // 윈도우의 Y측 총 길
     const nowHeight = Math.ceil(window.scrollY); // 현재 스크롤의 Y축 위치
     const viewHeight = docHeight - winHeight; // 스크롤을 끝까지 내렸을 때의 Y축 위치
-    console.log(viewHeight, nowHeight);
+    
     if(viewHeight === nowHeight && scrollEventFlg) {
       dispatch(setScrollEventFlg(false));
       dispatch(festivalIndex());
     }
   }
-    
+  
+  // 상세페이지로 이동
+  function redirectShow(item) {
+    dispatch(setfestivalInfo(item));
+    navigate(`/festivals/${item.contentid}`);
+  }
 
   return (
     <>
     <div className="container">
       {
-        festivalList.length > 0 && festivalList.map(item => {
+        festivalList.map(item => {
           return (
-            <div className="card" key={item.contentid + item.createdtime}>
+            <div className="card" onClick={() => { redirectShow(item) }} key={item.contentid + item.createdtime}>
               <div className="card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
               <p className="card-title">{item.title}</p>
               <p className="card-period">{dateFormatter.WithHyphenYMD(item.eventstartdate)} - {dateFormatter.WithHyphenYMD(item.eventenddate)}</p>
@@ -64,9 +71,9 @@ function FestivalList() {
         })
       } 
     </div>
-    <div className=''>
+    {/* <div className=''>
       <button className='morebutton' type='button' onClick={addNextPage}>더보기</button>
-    </div>
+    </div> */}
     </>
   )  
 }
