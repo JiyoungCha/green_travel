@@ -9,6 +9,7 @@
 .show-title {
   font-size: 40px;
   font-weight: 900;
+  text-align: center;
 }
 
 .show-img{
@@ -17,11 +18,12 @@
 
 .show-period {
   font-size: 25px;
-  
+  text-align: center;  
 }
 
 .show-addr {
   font-size: 20px;
+  text-align: center;
 }
 
 .back-btn {
