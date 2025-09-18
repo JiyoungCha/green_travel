@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import titleImg from '../assets/main__img.png';
 import './Main.css';
 
 function Main() {
@@ -9,7 +8,7 @@ function Main() {
     <>
       <img className='title-img' 
       onClick={() => { navigate('/festivals') }} 
-      src={titleImg} alt="대문" />
+      src='base/main__img.png' alt="대문" />
     </>
   )
 }
