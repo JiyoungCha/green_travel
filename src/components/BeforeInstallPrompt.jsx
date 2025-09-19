@@ -20,9 +20,9 @@ function BeforeInstallPrompt() {
       const result = await defferdPrompt.userChoice;
 
       if(result === 'accepted') {
-        console.log('동의');
+        console.log('동의', result);
       } else {
-        console.log('거부');
+        console.log('거부', result);
       }
 
       // 한 번 사용한 prompt 이벤트는 재사용이 불가하므로 state 초기화
