@@ -1,11 +1,11 @@
-.container {
+.stay-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 15px;
 }
 
-.card {
+.stay-card {
   border-radius: 13px;
   background-color: #353941;
   padding: 8px;
@@ -17,30 +17,25 @@
   cursor: pointer;
 }
 
-.card-img {
+.stay-card-img {
   border-radius: 5px 5px 0 0;
   padding-top: 70%;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.card-title {
+.stay-card-title {
   font-size: 26px;
 }
 
-.card-period {
+.stay-card-period {
   font-size: 20px;
 }
 
-.buttonbox {
-  padding: 0 15px;
-}
-
-.morebutton {
-  background-color: #5F85DB;
-  size: 30px;
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 15px;
-  border-radius: 10px;
+.stay-list-btn-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
