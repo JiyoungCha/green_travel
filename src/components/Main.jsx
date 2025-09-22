@@ -7,7 +7,7 @@ function Main() {
   return (
     <>
       <img className='title-img' 
-      onClick={() => { navigate('/festivals') }} 
+      onClick={() => { navigate('/menu') }} 
       src='base/main__img.png' alt="대문" />
     </>
   )

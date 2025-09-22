@@ -7,27 +7,31 @@ const staySlice = createSlice({
     staylist: [],
     page: 0,
     error: null,
+    scrollEventFlg: true,
   },
   reducers: {
-    
+    setScrollEventFlg: (state, action) => {
+      state.scrollEventFlg = action.payload;
+    }
   },
   extraReducers: builder => {
     builder
       .addCase(stayIndex.fulfilled, (state, action) => {
         if (action.payload && action.payload.items && action.payload.items.item) {
-          state.staylist = action.payload.items.item;
-          console.log(action.payload, action.type);
+          state.staylist = [...state.staylist, ...action.payload.items.item];
+          state.page = action.payload.pageNo;
+          state.scrollEventFlg = true;
         } else {
-          state.staylist = [];
+          state.scrollEventFlg = false;
         } 
       })
       .addCase(stayIndex.rejected, (state, action) => {
-        state.staylist = [];
         state.error = action.error.message;
+        state.scrollEventFlg = false;
       })      
   }
 });
 
-// export const { stayList } = staySlice.actions;
+export const { setScrollEventFlg } = staySlice.actions;
 
 export default staySlice.reducer;

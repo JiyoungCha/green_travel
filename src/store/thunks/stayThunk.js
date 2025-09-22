@@ -16,7 +16,7 @@ const stayIndex = createAsyncThunk(
         _type: axiosConfig.TYPE,
         arrange: axiosConfig.ARRANGE,
         numOfRows: axiosConfig.NUMER_OF_ROWS,
-        pageNo: state.stay.page,
+        pageNo: state.stay.page + 1,
       }
     }
 

@@ -26,7 +26,7 @@ export default defineConfig({
         lang: 'ko', // 언어 설정(기본 언어)
         display: 'standalone', // 브라우저 UI 업이 앱처럼 독립 실행
         orientation: 'portrait', // 앱 실행시 뷰의 기본방향을 세로로 설정
-        start_url: '/', // PWA가 설치되어 있을 때, 홈화면에서 앱을 실행했을 때 처음 열릴 URL     }
+        start_url: '/', // PWA가 설치되어 있을 때, 홈화면에서 앱을 실행했을 때 처음 열릴 URL
         icons: [
           // 편의를 위해서 public 디렉토리에 배치하고 사용할 것
           {

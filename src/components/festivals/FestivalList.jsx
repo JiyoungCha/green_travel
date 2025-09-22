@@ -58,6 +58,10 @@ function FestivalList() {
 
   return (
     <>
+      <div className="festival-list-btn-container">
+        <button type="button" className="back-btn" onClick={() => {navigate(`/menu`)}}></button>
+      </div>
+
     <div className="container">
       {
         festivalList.map(item => {
