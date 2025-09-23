@@ -1,9 +1,14 @@
-import { KEY_LOCALSTORAGE_CLEAR_DATE, KEY_LOCALSTORAGE_FESTIVAL_PAGE } from "../configs/keys";
-import { KEY_LOCALSTORAGE_FESTIVAL_LIST } from "../configs/keys";
-import { KEY_LOCALSTORAGE_FESTIVAL_FLG } from "../configs/keys";
+import { 
+  KEY_LOCALSTORAGE_CLEAR_DATE, 
+  KEY_LOCALSTORAGE_FESTIVAL_PAGE,
+  KEY_LOCALSTORAGE_FESTIVAL_LIST,
+  KEY_LOCALSTORAGE_FESTIVAL_FLG,
+  KEY_LOCALSTORAGE_STAY_LIST,
+  KEY_LOCALSTORAGE_STAY_PAGE
+ } from "../configs/keys";
 
 export const localStorageUtil = {
-  // 채임 중심적 설계시 코드 작성 방법
+  // 책임 중심적 설계시 코드 작성 방법
   clearLocalstorage: () => {
     localStorage.clear();
   },
@@ -63,6 +68,18 @@ export const localStorageUtil = {
   getClearDate: () => {
     return localStorage.getItem(KEY_LOCALSTORAGE_CLEAR_DATE);
   },
+  setStayList: (data) => {
+    localStorage.setItem(KEY_LOCALSTORAGE_STAY_LIST, JSON.stringify(data));
+  },
+  getStayList: () => {
+    return JSON.parse(localStorage.getItem(KEY_LOCALSTORAGE_STAY_LIST));
+  },
+  setStayPage: (pageNo) => {
+    localStorage.setItem(KEY_LOCALSTORAGE_STAY_PAGE, pageNo.toString());
+  },
+  getStayPage: () => {
+    return parseInt(localStorage.getItem(KEY_LOCALSTORAGE_STAY_PAGE));
+  },
   // 역할 중심적 설계시 코드 작성 방법
   // setLocalSttorage: (name, data) => {
   //   localStorage.setItem(name, JSON.stringify(data));
@@ -70,5 +87,6 @@ export const localStorageUtil = {
   // getLocalStorage: (name) => {
   //   return localStorage.getItem(name);
   // }
+  
 }
 

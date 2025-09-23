@@ -7,11 +7,9 @@ import store from "./store/store.js";
 import swRegister from './swRegister.js';
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  // </StrictMode>
+  <Provider store={store}>
+    <Router />
+  </Provider>
 )
 
 swRegister(); // 커스텀 서비스 워커 등록

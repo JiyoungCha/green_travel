@@ -5,6 +5,7 @@ import { stayIndex } from '../../store/thunks/stayThunk';
 import { useNavigate } from 'react-router-dom';
 import { setScrollEventFlg } from '../../store/slices/staySlice.js';
 import { setStayInfo } from '../../store/slices/stayShowSlice.js';
+import { localStorageUtil } from '../../utils/localStorageUtil.js';
 
 function StayList() {
   const dispatch = useDispatch();
@@ -24,6 +25,13 @@ function StayList() {
     window.removeEventListener('scroll', addNextPage);
   }
   }, []);
+
+  useEffect(() => {
+    if (staylist && staylist.length > 0) {
+      localStorageUtil.setStayList(staylist);
+      console.log('StayList: localStorage에 저장된 staylist', localStorageUtil.getStayList());
+    }
+  }, [staylist]); 
 
   function addNextPage() {
     const docHeight = document.documentElement.scrollHeight

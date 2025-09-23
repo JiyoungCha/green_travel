@@ -8,8 +8,8 @@ function Main() {
     <>
       <img className='title-img' 
       onClick={() => { navigate('/menu') }} 
-      src='base/main__img.png' alt="대문" />
-    </>
+      src='base/main__img.png' alt="대문" />    
+    </>    
   )
 }
 

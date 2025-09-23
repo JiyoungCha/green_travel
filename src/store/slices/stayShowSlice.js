@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const stayShowSlice = createSlice({
   name: 'stayShowSlice',
   initialState: {
-    stayInfo: null,
+    stayInfo: {},
   },
   reducers: {
     setStayInfo(state, action) {

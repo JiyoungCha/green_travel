@@ -12,8 +12,10 @@ const staySlice = createSlice({
   reducers: {
     setScrollEventFlg: (state, action) => {
       state.scrollEventFlg = action.payload;
-    }
-  },
+    },
+    setStayList: (state, action) => {
+      state.staylist = action.payload;
+     },
   extraReducers: builder => {
     builder
       .addCase(stayIndex.fulfilled, (state, action) => {
@@ -29,9 +31,10 @@ const staySlice = createSlice({
         state.error = action.error.message;
         state.scrollEventFlg = false;
       })      
+    }
   }
 });
 
-export const { setScrollEventFlg } = staySlice.actions;
+export const { setScrollEventFlg, setStayList } = staySlice.actions;
 
 export default staySlice.reducer;
