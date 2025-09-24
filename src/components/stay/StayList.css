@@ -1,3 +1,71 @@
+.stay-list-btn-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.area-toggle-btn-container {
+  display: flex;
+  justify-content: flex-end; 
+  padding: 0 20px 0 0; 
+}
+
+.area-toggle-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #EFF3F8;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #5F85DB;
+}
+
+.area-toggle-btn:hover {
+  background-color: #90b8f8;
+}
+
+.stay-area-container {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.stay-area-checkbox {
+  display: none;
+}
+
+.stay-area-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 가짜 체크박스 */
+.stay-area-text::before {
+   content: '';
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #6c757d;
+  border-radius: 30%;
+  background-color: #353941;
+  transition: all 0.2s;
+  margin: 0 8px 0 5px;
+}
+
+/* 선택했을 때 가짜 체크박스 스타일 변경  */
+.stay-area-checkbox:checked + .stay-area-text::before {
+  background-color: #5F85Db;
+  border-color: #5F85Db;
+  text-align: center;
+}
+
 .stay-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -32,10 +100,3 @@
   font-size: 20px;
 }
 
-.stay-list-btn-container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}

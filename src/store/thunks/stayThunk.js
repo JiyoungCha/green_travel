@@ -15,7 +15,7 @@ const stayIndex = createAsyncThunk(
         MobileApp: axiosConfig.MOBILE_APP,
         _type: axiosConfig.TYPE,
         arrange: axiosConfig.ARRANGE,
-        numOfRows: axiosConfig.NUMER_OF_ROWS,
+        numOfRows: 500,
         pageNo: state.stay.page + 1,
       }
     }
