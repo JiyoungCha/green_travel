@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { setStayInfo } from '../../store/slices/stayShowSlice.js';
 import { localStorageUtil } from '../../utils/localStorageUtil.js';
 import { REGION_CODE, REGION_CODE_NAME } from '../../configs/regionCodes.js';
+import TopBtn from '../common/TopBtn.jsx';
+
 
 function StayList() {
   const dispatch = useDispatch();
@@ -85,6 +87,30 @@ function StayList() {
     })
   };
 
+  // 해당 도시에 등록된 숙소가 없을 때 대비
+  let stayContent;
+
+  if (stayFilter.length ===0 && selectedRegions.length > 0) {
+    stayContent = <p className='not-find-stay'>해당 지역의 숙소를 찾을 수 없습니다.</p>;
+  }  else {
+      stayContent = (
+        <div className="stay-container">
+          {
+            staylist && stayFilter.slice(0, page * 12).map(item => {
+              return (
+                <div onClick={() => { redirectShow(item) }} className="stay-card" key={item.contentid}>
+                  <div className="stay-card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
+                  <p className="stay-card-title">{item.title}</p>
+                  <p className="stay-card-addr">{item.addr1}</p>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+    }
+
+
   return (
     <>
       <div className="stay-list-btn-container">
@@ -112,21 +138,9 @@ function StayList() {
             })
           )
         }
-      </div>
-      
-      <div className="stay-container">
-        {
-          staylist && stayFilter.slice(0, page * 12).map(item => {
-            return (
-            <div onClick={() => { redirectShow(item) }} className="stay-card" key={item.contentid}>
-            <div className="stay-card-img" style={{backgroundImage: `url('${item.firstimage}')`}}></div>
-            <p className="stay-card-title">{item.title}</p>
-            <p className="stay-card-addr">{item.addr1}</p>
-            </div>
-            )            
-          })          
-        }
-      </div>
+      </div>      
+        { stayContent }
+    <TopBtn />
     </>
   );
 }

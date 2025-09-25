@@ -6,6 +6,7 @@ import { dateFormatter } from '../../utils/dateFormatter.js';
 import { setScrollEventFlg } from '../../store/slices/festivalSlice.js';
 import { useNavigate } from 'react-router-dom';
 import { setfestivalInfo } from '../../store/slices/festivalShowSlices.js'
+import TopBtn from '../common/TopBtn.jsx';
 
 function FestivalList() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ function FestivalList() {
   
   const festivalList = useSelector(state => state.festival.list);  
   const scrollEventFlg = useSelector(state => state.festival.scrollEventFlg);
-
+ 
   useEffect(() => {
     // 로컬스토리지에 저장된 날짜 획득
     //  저장된 날짜 없으면 로컬스토리지에 현재 날짜 저장
@@ -75,9 +76,7 @@ function FestivalList() {
         })
       } 
     </div>
-    {/* <div className=''>
-      <button className='morebutton' type='button' onClick={addNextPage}>더보기</button>
-    </div> */}
+    <TopBtn />
     </>
   )  
 }
