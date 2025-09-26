@@ -1,11 +1,11 @@
 const axiosConfig = {
-  SERVICE_KEY: '77a64d7f0e247e48590ab9b870408ea322854340835c427e1ab849ed6fbec50c',
-  MOBILE_OS: 'WEB',
-  MOBILE_APP: 'Green Travel',
-  TYPE: 'json',
-  ARRANGE: 'O',
+  SERVICE_KEY: import.meta.env.VITE_SERVICE_KEY,
+  MOBILE_OS: import.meta.env.VITE_MOBILE_OS,
+  MOBILE_APP: import.meta.env.VITE_MOBILE_APP,
+  TYPE: import.meta.env.VITE_TYPE,
+  ARRANGE: import.meta.env.VITE_ARRANGE,
   BASE_URL: 'https://apis.data.go.kr/B551011/KorService2',
-  NUMER_OF_ROWS: 12,
+  NUMBER_OF_ROWS: 12,
 }
 
 export default axiosConfig;

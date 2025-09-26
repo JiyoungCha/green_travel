@@ -8,8 +8,17 @@
   font-style: normal;
 }
 
+/* CSS에서의 변수 선언 */
+/* :root : 사작지점 */
+:root {
+  /* 변수명은 무조건 '--변수명'로 시작 */
+  --persnoal-color-1: #26282b;
+  --persnoal-color-2: #EFF3F8;
+}
+
 body {
-  background-color: #26282b;
+  /* 변수 사용: var(변수명) 호출 */
+  background-color: var(--persnoal-color-1);
 }
 
 #root {

@@ -1,6 +1,6 @@
 .header-title {
   padding: 80px 0;
-  color: #EFF3F8;
-  font-size: 60px;
+  color: var(--persnoal-color-2);
+  font-size: calc(4rem - 5px);
   text-align: center;
 }

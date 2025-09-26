@@ -19,7 +19,7 @@ const festivalIndex = createAsyncThunk(
         MobileApp: axiosConfig.MOBILE_APP,
         _type: axiosConfig.TYPE,
         arrange: axiosConfig.ARRANGE,
-        numOfRows: axiosConfig.NUMER_OF_ROWS,
+        numOfRows: axiosConfig.NUMBER_OF_ROWS,
         pageNo: state.festival.page + 1,
         eventStartDate: pastDateYMD,
       }
